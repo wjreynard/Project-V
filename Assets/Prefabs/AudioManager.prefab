@@ -1,0 +1,90 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &70430003988125503
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 70430003988125488}
+  - component: {fileID: 70430003988125489}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &70430003988125488
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 70430003988125503}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &70430003988125489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 70430003988125503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd7ddaa19f97ff849aa3323a3b1c3f3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioMixer: {fileID: 24100000, guid: 43c8efa6ba8ff8049af5e9a738ddd1a6, type: 2}
+  audioMixerGroup: {fileID: 24300002, guid: 43c8efa6ba8ff8049af5e9a738ddd1a6, type: 2}
+  sounds:
+  - clip: {fileID: 8300000, guid: 40b3ad7718136c4458bd2ec1d8efe24c, type: 3}
+    name: Jump
+    volume: 0
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 255bf945e9987144fa733276c4c2a09a, type: 3}
+    name: Respawn
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 2fa618b947f54984d912f09f8cfeeddb, type: 3}
+    name: Music
+    volume: 0
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 7c7baa545244eec4c81f34c61355780f, type: 3}
+    name: Coin
+    volume: 0
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 895f1cc205da6524fb12f67019e34841, type: 3}
+    name: Checkpoint
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 781717b5d3f05ec4eb651068750dcf64, type: 3}
+    name: Computer
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 66250cb95da8c2d4f9837e5a4763db16, type: 3}
+    name: BigComputer
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
