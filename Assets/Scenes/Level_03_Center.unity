@@ -13294,6 +13294,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 70430003988125489, guid: ed5d9d5f08483af41b61d53dcd243a19,
+        type: 3}
+      propertyPath: sounds.Array.data[2].volume
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 70430003988125503, guid: ed5d9d5f08483af41b61d53dcd243a19,
         type: 3}
       propertyPath: m_Name
@@ -13603,8 +13608,13 @@ PrefabInstance:
     - target: {fileID: 8330487515385951801, guid: af2a913ff95a2604d829b969b2e80e13,
         type: 3}
       propertyPath: duration
-      value: 0.1
+      value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 8330487515385951801, guid: af2a913ff95a2604d829b969b2e80e13,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 509122219}
     - target: {fileID: 8330487515689632355, guid: af2a913ff95a2604d829b969b2e80e13,
         type: 3}
       propertyPath: m_LocalPosition.x

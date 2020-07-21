@@ -14,7 +14,7 @@ public class PlayerController : PhysicsObject
     public GameObject activeCamera;
     public Animator animator;
 
-    private bool bCanMove = true;
+    public bool bCanMove = false;
 
     public AudioManager audioManager;
 

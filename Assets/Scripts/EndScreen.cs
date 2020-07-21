@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class EndScreen : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class EndScreen : MonoBehaviour
     public Animator animator;
     public PlayerController player;
     public GameObject holder;
+    public AudioMixer audioMixer;
 
     private void Update()
     {
@@ -25,8 +27,18 @@ public class EndScreen : MonoBehaviour
             if (Input.GetButtonDown("Jump"))
             {
                 Debug.Log("Restarting game");
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                StartCoroutine(FadeMixerGroup.StartFade(audioMixer, "MasterVolume", 4.0f, 0.0f));
+                StartCoroutine(RestartGameCoroutine());
             }
         }
+    }
+
+    IEnumerator RestartGameCoroutine()
+    {
+        Debug.Log("Started Coroutine at timestamp : " + Time.time);
+        animator.SetBool("RestartActive", true);
+        yield return new WaitForSeconds(5.0f);
+        Debug.Log("Ended Coroutine at timestamp : " + Time.time);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

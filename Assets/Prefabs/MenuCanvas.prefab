@@ -804,3 +804,4 @@ MonoBehaviour:
   animator: {fileID: 8330487514967519157}
   player: {fileID: 0}
   holder: {fileID: 8330487516078636734}
+  audioMixer: {fileID: 24100000, guid: 43c8efa6ba8ff8049af5e9a738ddd1a6, type: 2}

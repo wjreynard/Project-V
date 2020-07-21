@@ -8,18 +8,21 @@ public class ControlsImage : MonoBehaviour
     public Animator animator;
     public float duration = 2.5f;
 
+    public PlayerController player;
+
     IEnumerator FadeControls()
     {
         //Debug.Log("Started Coroutine at timestamp : " + Time.time);
+        //Debug.Log("Ended Coroutine at timestamp : " + Time.time);
 
         yield return new WaitForSeconds(duration);
         animator.SetBool("Active", false);
-
-        //Debug.Log("Ended Coroutine at timestamp : " + Time.time);
+        player.bCanMove = true; 
     }
 
     void Start()
     {
+        //animator.SetBool("StartGameActive", true);
         StartCoroutine(FadeControls());
     }
 }

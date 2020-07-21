@@ -10,19 +10,18 @@ public class AudioManager : MonoBehaviour
 
     public Sound[] sounds;
 
-    [HideInInspector]
-    public static AudioManager instance;
+    //public static AudioManager instance;
 
     private void Awake()
     {
-        if (instance == null) {
-            instance = this;
-        } else {
-            Destroy(gameObject);
-            return;
-        }
+        //if (instance == null)
+        //    instance = this;
+        //else {
+        //    Destroy(gameObject);
+        //    return;
+        //}
 
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
 
 
         foreach (Sound s in sounds)
@@ -41,12 +40,11 @@ public class AudioManager : MonoBehaviour
     public void Start()
     {
         PlaySound("Music");
-        StartCoroutine(FadeMixerGroup.StartFade(audioMixer, "MasterVolume", 1.0f, 1.0f));
+        StartCoroutine(FadeMixerGroup.StartFade(audioMixer, "MasterVolume", 4.0f, 1.0f));
     }
 
     public void PlaySound(string name)
     {
-        //Debug.Log("AudioManager::PlaySound(string)");
         Sound s = Array.Find(sounds, sound => sound.name == name);
 
         if (s == null)
