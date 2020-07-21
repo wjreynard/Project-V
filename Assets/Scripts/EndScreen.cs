@@ -27,7 +27,7 @@ public class EndScreen : MonoBehaviour
             if (Input.GetButtonDown("Jump"))
             {
                 Debug.Log("Restarting game");
-                StartCoroutine(FadeMixerGroup.StartFade(audioMixer, "MasterVolume", 4.0f, 0.0f));
+                StartCoroutine(FadeMixerGroup.StartFade(audioMixer, "MasterVolume", 4.0f, 0.0f));   // fade out should be shorter than the RestartGameCoroutine() WaitForSeconds()
                 StartCoroutine(RestartGameCoroutine());
             }
         }
@@ -35,10 +35,8 @@ public class EndScreen : MonoBehaviour
 
     IEnumerator RestartGameCoroutine()
     {
-        Debug.Log("Started Coroutine at timestamp : " + Time.time);
         animator.SetBool("RestartActive", true);
         yield return new WaitForSeconds(5.0f);
-        Debug.Log("Ended Coroutine at timestamp : " + Time.time);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

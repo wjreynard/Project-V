@@ -40,7 +40,7 @@ public class AudioManager : MonoBehaviour
     public void Start()
     {
         PlaySound("Music");
-        StartCoroutine(FadeMixerGroup.StartFade(audioMixer, "MasterVolume", 4.0f, 1.0f));
+        StartCoroutine(FadeMixerGroup.StartFade(audioMixer, "MasterVolume", 0.1f, 1.0f));
     }
 
     public void PlaySound(string name)

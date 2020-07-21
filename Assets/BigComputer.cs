@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class BigComputer : MonoBehaviour
 {
-
+    public int counter = 0;
     public bool bActive = false;
+    public bool bReady = false;
     public Animator animator;
     public EndScreen endScreen;
 
@@ -19,6 +20,11 @@ public class BigComputer : MonoBehaviour
 
     private void Update()
     {
+        if (counter >= 4)
+        {
+            bReady = true;
+        }
+
         if (bActive)
         {
             animator.SetBool("Active", true);

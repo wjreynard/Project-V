@@ -20,6 +20,8 @@ public class PlayerController : PhysicsObject
 
     public RespawnImage respawnImage;
 
+    public BigComputer bigComputer;
+
     protected override void ComputeVelocity()
     {
         if (bCanMove)
@@ -114,18 +116,21 @@ public class PlayerController : PhysicsObject
         else if (collision.gameObject.CompareTag("Computer"))
         {
             if (collision.gameObject.GetComponent<Computer>().bActive == false)
+            {
                 audioManager.PlaySound("Computer");
+                bigComputer.counter++;
+            }
 
             collision.gameObject.GetComponent<Computer>().bActive = true;
         }
         else if (collision.gameObject.CompareTag("BigComputer"))
         {
-            bCanMove = false;
-
-            if (collision.gameObject.GetComponent<BigComputer>().bActive == false)
+            if (collision.gameObject.GetComponent<BigComputer>().bReady)
+            {
+                collision.gameObject.GetComponent<BigComputer>().bActive = true;
+                bCanMove = false;
                 audioManager.PlaySound("BigComputer");
-
-            collision.gameObject.GetComponent<BigComputer>().bActive = true;
+            }
         }
     }
 
