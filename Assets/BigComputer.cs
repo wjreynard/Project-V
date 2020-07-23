@@ -10,9 +10,11 @@ public class BigComputer : MonoBehaviour
     public Animator animator;
     public EndScreen endScreen;
 
+    public GameObject[] counters = new GameObject[3];
+
     IEnumerator EndScreenCoroutine()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(2.5f);
 
         // should be activated after final big computer animation finishes
         endScreen.bActive = true;
@@ -20,15 +22,36 @@ public class BigComputer : MonoBehaviour
 
     private void Update()
     {
-        if (counter >= 4)
+        if (counter >= 3)
         {
             bReady = true;
         }
+
+        DisplayCounters();
 
         if (bActive)
         {
             animator.SetBool("Active", true);
             StartCoroutine(EndScreenCoroutine());
         }
+    }
+
+    private void DisplayCounters()
+    {
+        if (counter >= 1)
+        {
+            counters[0].SetActive(true);
+        }
+
+        if (counter >= 2)
+        {
+            counters[1].SetActive(true);
+        }
+
+        if (counter >= 3)
+        {
+            counters[2].SetActive(true);
+        }
+
     }
 }
