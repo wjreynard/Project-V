@@ -40,6 +40,14 @@ public class PlayerController : PhysicsObject
             if (flipSprite) spriteRenderer.flipX = !spriteRenderer.flipX;
 
             targetVelocity = move * maxSpeed;
+
+            if ((move.x > 0.01f) || (move.x < -0.01f))
+            {
+                animator.SetBool("Moving", true);
+            } else
+            {
+                animator.SetBool("Moving", false);
+            }
         }
     }
 
@@ -65,7 +73,7 @@ public class PlayerController : PhysicsObject
         audioManager.PlaySound("Respawn");
         bCanMove = true;
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1.0f);
         animator.SetBool("Flashing", false);
     }
 
