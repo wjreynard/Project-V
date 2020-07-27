@@ -14,7 +14,7 @@ public class BigComputer : MonoBehaviour
 
     IEnumerator EndScreenCoroutine()
     {
-        yield return new WaitForSeconds(4.0f);
+        yield return new WaitForSeconds(5.0f);
 
         // should be activated after final big computer animation finishes
         endScreen.bActive = true;
