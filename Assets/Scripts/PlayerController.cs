@@ -162,6 +162,7 @@ public class PlayerController : PhysicsObject
 
     void FlipGravity()
     {
+        velocity.y *= 0;
         gravityModifier *= -1;
         spriteRenderer.flipY = !spriteRenderer.flipY;
         audioManager.PlaySound("Jump");
