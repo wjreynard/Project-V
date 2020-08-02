@@ -22,7 +22,15 @@ public class ControlsImage : MonoBehaviour
 
     void Start()
     {
-        //animator.SetBool("StartGameActive", true);
-        StartCoroutine(FadeControls());
+        //StartCoroutine(FadeControls());
+    }
+
+    private void Update()
+    {
+        if (Input.GetButtonDown("Jump"))
+        {
+            animator.SetBool("Active", false);
+            player.bCanMove = true;
+        }
     }
 }
