@@ -97,7 +97,8 @@ public class PlayerController : PhysicsObject
         activeCamera = checkpoint.thisCamera;
         activeCamera.SetActive(true);
 
-        audioManager_Effects.PlaySound("Respawn");
+        int r = Mathf.CeilToInt(UnityEngine.Random.Range(0.0f, 3.0f));
+        audioManager_Effects.PlaySound("Respawn" + r.ToString());
         bCanMove = true;
 
         yield return new WaitForSeconds(1.0f);
@@ -133,7 +134,10 @@ public class PlayerController : PhysicsObject
         else if (collision.gameObject.CompareTag("Checkpoint"))
         {
             if (collision.gameObject.GetComponent<Checkpoint>().bActive == false)
-                audioManager_Effects.PlaySound("Checkpoint");
+            {
+                int r = Mathf.CeilToInt(UnityEngine.Random.Range(0.0f, 3.0f));
+                audioManager_Effects.PlaySound("Checkpoint" + r.ToString());
+            }
 
             // reset old checkpoint
             if (checkpoint != null)
