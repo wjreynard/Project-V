@@ -6,7 +6,7 @@ using UnityEngine.Audio;
 public class AudioManager : MonoBehaviour
 {
     public AudioMixer audioMixer;
-    public AudioMixerGroup audioMixerGroup;
+    //public AudioMixerGroup audioMixerGroup;
 
     public bool bPlayMusic;
 
@@ -35,7 +35,7 @@ public class AudioManager : MonoBehaviour
             s.source.pitch = s.pitch;
             s.source.playOnAwake = false;
             s.source.loop = s.loop;
-            s.source.outputAudioMixerGroup = audioMixerGroup;
+            s.source.outputAudioMixerGroup = s.audioMixerGroup;
         }
     }
 

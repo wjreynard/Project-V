@@ -28,7 +28,7 @@ public class EndScreen : MonoBehaviour
             // restart on SPACE press
             if (Input.GetButtonDown("Jump"))
             {
-                Debug.Log("Restarting game");
+                //Debug.Log("Restarting game");
 
                 // fade music
                 // fade out should be shorter than the RestartGameCoroutine() WaitForSeconds()

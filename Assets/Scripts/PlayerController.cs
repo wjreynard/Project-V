@@ -3,32 +3,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class PlayerController : PhysicsObject
 {
-    [Space(10)]
+    [Space(20)]
 
     public float maxSpeed = 10.0f;
     public bool bCanMove = false;
     public Animator animator;
     public int score = 0;
+    private bool bAlreadyLanded = true;
 
-    [Space(10)]
+    [Space(20)]
 
     public Checkpoint checkpoint;
     public Vector3 checkpointTransform;
     public GameObject activeCamera;
 
-    [Space(10)]
+    [Space(20)]
 
     public AudioManager audioManager_Effects;
     public AudioManager audioManager_Music;
+    public AudioMixer audioMixer_Music;
 
-    [Space(10)]
+    [Space(20)]
 
     public RespawnImage respawnImage;
 
-    [Space(10)]
+    [Space(20)]
 
     public BigComputer bigComputer;
 
@@ -44,8 +47,37 @@ public class PlayerController : PhysicsObject
             {
                 FlipGravity();
                 audioManager_Effects.PlaySound("Jump");
-                //audioManager_Music.gameObject.GetComponent<AudioSource>().
             }
+
+            if (velocity.y < 0.01f && velocity.y > -0.01f)  // if not moving on y-axis
+            {
+                // fade out beat track
+                StartCoroutine(FadeMixerGroup.StartFade(audioMixer_Music, "BeatMasterVolume", 1.0f, 0.0f));
+            }
+            else if (velocity.y > 0.01f || velocity.y < -0.01f) // if moving up or down
+            {
+                bAlreadyLanded = false;
+                // fade in beat track
+                StartCoroutine(FadeMixerGroup.StartFade(audioMixer_Music, "BeatMasterVolume", 0.1f, 1.0f));
+            }
+
+            if (!bAlreadyLanded && bGrounded)
+            {
+                Debug.Log("Played landing sound");
+                bAlreadyLanded = true;
+                audioManager_Effects.PlaySound("Landed");
+            }
+
+            //// fade out beat track when they landed
+            //if (bGrounded)
+            //{
+            //    audioManager_Effects.PlaySound("Landed");
+            //    StartCoroutine(FadeMixerGroup.StartFade(audioMixer_Music, "BeatMasterVolume", 0.01f, 0.0f));
+            //} else if (!bGrounded)
+            //{
+            //    // fade in beat track
+            //    //StartCoroutine(FadeMixerGroup.StartFade(audioMixer_Music, "BeatMasterVolume", 0.01f, 1.0f));
+            //}
 
             // flip sprite
             bool flipSprite = (spriteRenderer.flipX ? (move.x > 0.01f) : (move.x < -0.01f));
