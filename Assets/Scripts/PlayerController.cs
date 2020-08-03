@@ -54,7 +54,7 @@ public class PlayerController : PhysicsObject
             {
                 bAlreadyLanded = true;
                 audioManager_Effects.PlaySound("Landed");
-                StartCoroutine(FadeMixerGroup.StartFade(audioMixer_Music, "BeatMasterVolume", 0.6f, 0.0f));
+                StartCoroutine(FadeMixerGroup.StartFade(audioMixer_Music, "BeatMasterVolume", 0.4f, 0.0f));
             }
             else if (velocity.y > 0.01f || velocity.y < -0.01f) // if moving up or down
             {
@@ -98,6 +98,7 @@ public class PlayerController : PhysicsObject
         activeCamera.SetActive(true);
 
         int r = Mathf.CeilToInt(UnityEngine.Random.Range(0.0f, 3.0f));
+        Debug.Log(r);
         audioManager_Effects.PlaySound("Respawn" + r.ToString());
         bCanMove = true;
 
