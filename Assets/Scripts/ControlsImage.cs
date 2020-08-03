@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class ControlsImage : MonoBehaviour
 {
@@ -9,6 +10,10 @@ public class ControlsImage : MonoBehaviour
     public float duration = 2.5f;
 
     public PlayerController player;
+    public AudioManager audioManager_Effects;
+    public AudioMixer audioMixer_Music;
+
+    private bool bStarted = false;
 
     IEnumerator FadeControls()
     {
@@ -27,8 +32,11 @@ public class ControlsImage : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("Jump"))
+        if (!bStarted && Input.GetButtonDown("Jump"))
         {
+            bStarted = true;
+            StartCoroutine(FadeMixerGroup.StartFade(audioMixer_Music, "MusicMasterVolume", 5.01f, 1.0f));
+            audioManager_Effects.PlaySound("Start");
             animator.SetBool("Active", false);
             player.bCanMove = true;
         }

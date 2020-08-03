@@ -46,12 +46,12 @@ public class AudioManager : MonoBehaviour
             PlaySound("Music");
             PlaySound("Beat");
 
-            //StartCoroutine(FadeMixerGroup.StartFade(audioMixer, "MusicMasterVolume", 25.01f, 1.0f));
+            //StartCoroutine(FadeMixerGroup.StartFade(audioMixer, "MusicMasterVolume", 0.01f, 1.0f));
         }
 
         if (!bPlayMusic)
         {
-            StartCoroutine(FadeMixerGroup.StartFade(audioMixer, "EffectsMasterVolume", 20.01f, 1.0f));
+            StartCoroutine(FadeMixerGroup.StartFade(audioMixer, "EffectsMasterVolume", 0.01f, 1.0f));
         }
     }
 

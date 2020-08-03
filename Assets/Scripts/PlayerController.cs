@@ -16,7 +16,7 @@ public class PlayerController : PhysicsObject
 
     public bool bCanMove = false;
 
-    public AudioManager audioManager;
+    public AudioManager audioManager_Effects;
 
     public RespawnImage respawnImage;
 
@@ -33,6 +33,7 @@ public class PlayerController : PhysicsObject
             if (Input.GetButtonDown("Jump") && (velocity.y < 0.01f && velocity.y > -0.01f))
             {
                 FlipGravity();
+                audioManager_Effects.PlaySound("Jump");
             }
 
             // flip sprite
@@ -70,7 +71,7 @@ public class PlayerController : PhysicsObject
         activeCamera = checkpoint.thisCamera;
         activeCamera.SetActive(true);
 
-        audioManager.PlaySound("Respawn");
+        audioManager_Effects.PlaySound("Respawn");
         bCanMove = true;
 
         yield return new WaitForSeconds(1.0f);
@@ -99,12 +100,12 @@ public class PlayerController : PhysicsObject
         {
             collision.gameObject.SetActive(false);
             score += 100;
-            audioManager.PlaySound("Coin");
+            audioManager_Effects.PlaySound("Coin");
         }
         else if (collision.gameObject.CompareTag("Checkpoint"))
         {
             if (collision.gameObject.GetComponent<Checkpoint>().bActive == false)
-                audioManager.PlaySound("Checkpoint");
+                audioManager_Effects.PlaySound("Checkpoint");
 
             // reset old checkpoint
             if (checkpoint != null)
@@ -120,12 +121,13 @@ public class PlayerController : PhysicsObject
         else if (collision.gameObject.CompareTag("Switcher"))
         {
             FlipGravity();
+            audioManager_Effects.PlaySound("Switcher");
         }
         else if (collision.gameObject.CompareTag("Computer"))
         {
             if (collision.gameObject.GetComponent<Computer>().bActive == false)
             {
-                audioManager.PlaySound("Computer");
+                audioManager_Effects.PlaySound("Computer");
                 bigComputer.counter++;
             }
 
@@ -137,7 +139,7 @@ public class PlayerController : PhysicsObject
             {
                 collision.gameObject.GetComponent<BigComputer>().bActive = true;
                 bCanMove = false;
-                audioManager.PlaySound("BigComputer");
+                audioManager_Effects.PlaySound("BigComputer");
             }
         }
     }
@@ -165,7 +167,6 @@ public class PlayerController : PhysicsObject
         velocity.y *= 0;
         gravityModifier *= -1;
         spriteRenderer.flipY = !spriteRenderer.flipY;
-        audioManager.PlaySound("Jump");
     }
 
     //private void UpdateGravity()

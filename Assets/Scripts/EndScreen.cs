@@ -13,7 +13,9 @@ public class EndScreen : MonoBehaviour
     public Animator animator;
     public PlayerController player;
     public GameObject holder;
-    public AudioMixer audioMixer;
+
+    public AudioMixer audioMixer_Effects;
+    //public AudioMixer audioMixer_Music;
 
     private void Update()
     {
@@ -27,7 +29,13 @@ public class EndScreen : MonoBehaviour
             if (Input.GetButtonDown("Jump"))
             {
                 Debug.Log("Restarting game");
-                StartCoroutine(FadeMixerGroup.StartFade(audioMixer, "MasterVolume", 4.0f, 0.0f));   // fade out should be shorter than the RestartGameCoroutine() WaitForSeconds()
+
+                // fade music
+                // fade out should be shorter than the RestartGameCoroutine() WaitForSeconds()
+                //StartCoroutine(FadeMixerGroup.StartFade(audioMixer_Music, "MusicMasterVolume", 4.0f, 0.0f));
+                StartCoroutine(FadeMixerGroup.StartFade(audioMixer_Effects, "EffectsMasterVolume", 4.0f, 0.0f));
+                //StartCoroutine(FadeMixerGroup.StartFade(audioMixer, "MasterVolume", 4.0f, 0.0f));   
+
                 StartCoroutine(RestartGameCoroutine());
             }
         }

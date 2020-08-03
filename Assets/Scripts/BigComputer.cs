@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class BigComputer : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class BigComputer : MonoBehaviour
     public EndScreen endScreen;
 
     public GameObject[] counters = new GameObject[3];
+
+    public AudioMixer audioMixer_Music;
+    public AudioManager audioManager_Effects;
 
     IEnumerator EndScreenCoroutine()
     {
@@ -25,12 +29,16 @@ public class BigComputer : MonoBehaviour
         if (counter >= 3)
         {
             bReady = true;
+
+            StartCoroutine(FadeMixerGroup.StartFade(audioMixer_Music, "MusicMasterVolume", 1.0f, 0.0f));
+            GetComponent<AudioSource>().minDistance = 60.0f;
         }
 
         DisplayCounters();
 
         if (bActive)
         {
+            GetComponent<AudioSource>().volume = 0.0f;
             animator.SetBool("Active", true);
             StartCoroutine(EndScreenCoroutine());
         }
