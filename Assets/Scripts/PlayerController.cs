@@ -35,6 +35,8 @@ public class PlayerController : PhysicsObject
 
     public BigComputer bigComputer;
 
+    public Vector2 colliderOffset;
+
     protected override void ComputeVelocity()
     {
         if (bCanMove)
@@ -196,6 +198,9 @@ public class PlayerController : PhysicsObject
 
     void FlipGravity()
     {
+        colliderOffset *= -1;
+        GetComponent<BoxCollider2D>().offset = colliderOffset;
+
         velocity.y *= 0;
         gravityModifier *= -1;
         spriteRenderer.flipY = !spriteRenderer.flipY;
