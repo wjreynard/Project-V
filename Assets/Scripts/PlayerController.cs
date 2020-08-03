@@ -109,6 +109,8 @@ public class PlayerController : PhysicsObject
         Vector2 oldGravityVector = gravityVector;
         float oldGravityModifier = gravityModifier;
         gravityModifier = 0;
+        velocity *= 0;
+        targetVelocity *= 0;
 
         StartCoroutine(RespawnCoroutine());
 
@@ -125,7 +127,7 @@ public class PlayerController : PhysicsObject
         else if (collision.gameObject.CompareTag("Coin"))
         {
             collision.gameObject.SetActive(false);
-            score += 100;
+            score += 1;
             audioManager_Effects.PlaySound("Coin");
         }
         else if (collision.gameObject.CompareTag("Checkpoint"))
@@ -194,38 +196,4 @@ public class PlayerController : PhysicsObject
         gravityModifier *= -1;
         spriteRenderer.flipY = !spriteRenderer.flipY;
     }
-
-    //private void UpdateGravity()
-    //{
-    //    // could use unit circle to switch gravity
-    //    // increment an angle by HALF_PI, return cos(theta), sin(theta)
-
-    //    if (gravityIncrement == 0)
-    //    {
-    //        // down
-    //        gravityVector = new Vector2(0, -10.0f);
-    //        //spriteRenderer.flipY = !spriteRenderer.flipY;
-    //        transform.eulerAngles = new Vector3(0, 0, 0);
-    //    } else if (gravityIncrement == 1)
-    //    {
-    //        // left
-    //        gravityVector = new Vector2(-10.0f, 0);
-    //        //spriteRenderer.flipX = !spriteRenderer.flipX;
-    //        transform.eulerAngles = new Vector3(0, 0, -90.0f);
-    //    }
-    //    else if (gravityIncrement == 2)
-    //    {
-    //        // up
-    //        gravityVector = new Vector2(0, 10.0f);
-    //        //spriteRenderer.flipY = !spriteRenderer.flipY;
-    //        transform.eulerAngles = new Vector3(0, 0, 180.0f);
-    //    }
-    //    else if (gravityIncrement == 3)
-    //    {
-    //        // right
-    //        gravityVector = new Vector2(10.0f, 0);
-    //        transform.eulerAngles = new Vector3(0, 0, 90.0f);
-    //        //spriteRenderer.flipX = !spriteRenderer.flipX;
-    //    }
-    //}
 }

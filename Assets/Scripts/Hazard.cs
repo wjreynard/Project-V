@@ -7,8 +7,7 @@ public class Hazard : MonoBehaviour
     public float moveSpeed = 3.0f;
     private Vector2 origin;
     public float offset = 0;
-    public bool bAbsolute = false;
-    
+
     private void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
@@ -18,12 +17,6 @@ public class Hazard : MonoBehaviour
     {
         float s = Mathf.Sin((offset * Mathf.PI + Time.time) * moveSpeed);
 
-        if (bAbsolute)
-        {
-            rb2d.position = origin + velocity * Mathf.Abs(s);
-        } else
-        {
-            rb2d.position = origin + velocity * s;
-        }
+        rb2d.position = origin + velocity * s;
     }
 }

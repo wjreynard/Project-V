@@ -31,7 +31,7 @@ public class BigComputer : MonoBehaviour
             bReady = true;
 
             StartCoroutine(FadeMixerGroup.StartFade(audioMixer_Music, "MusicMasterVolume", 1.0f, 0.0f));
-            GetComponent<AudioSource>().minDistance = 60.0f;
+            GetComponent<AudioSource>().maxDistance = 130.0f;
         }
 
         DisplayCounters();
