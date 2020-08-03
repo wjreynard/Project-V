@@ -49,40 +49,18 @@ public class PlayerController : PhysicsObject
                 audioManager_Effects.PlaySound("Jump");
             }
 
-            if (velocity.y < 0.01f && velocity.y > -0.01f)  // if not moving on y-axis
+            // play landing sound and fade in and out the beat track
+            if (!bAlreadyLanded && velocity.y < 0.01f && velocity.y > -0.01f)  // if not moving on y-axis
             {
-
-                // play land sound
-                if (!bAlreadyLanded)
-                {
-                    bAlreadyLanded = true;
-                    Debug.Log("Playing land sound");
-                    audioManager_Effects.PlaySound("Landed");
-                    // fade out beat track
-                    StartCoroutine(FadeMixerGroup.StartFade(audioMixer_Music, "BeatMasterVolume", 1.0f, 0.0f));
-                }
+                bAlreadyLanded = true;
+                audioManager_Effects.PlaySound("Landed");
+                StartCoroutine(FadeMixerGroup.StartFade(audioMixer_Music, "BeatMasterVolume", 0.6f, 0.0f));
             }
             else if (velocity.y > 0.01f || velocity.y < -0.01f) // if moving up or down
             {
-                Debug.Log("Player moving up or down");
-
                 bAlreadyLanded = false;
-
-                // fade in beat track
-                StartCoroutine(FadeMixerGroup.StartFade(audioMixer_Music, "BeatMasterVolume", 0.1f, 1.0f));
+                StartCoroutine(FadeMixerGroup.StartFade(audioMixer_Music, "BeatMasterVolume", 0.01f, 1.0f));
             }
-
-
-            //// fade out beat track when they landed
-            //if (bGrounded)
-            //{
-            //    audioManager_Effects.PlaySound("Landed");
-            //    StartCoroutine(FadeMixerGroup.StartFade(audioMixer_Music, "BeatMasterVolume", 0.01f, 0.0f));
-            //} else if (!bGrounded)
-            //{
-            //    // fade in beat track
-            //    //StartCoroutine(FadeMixerGroup.StartFade(audioMixer_Music, "BeatMasterVolume", 0.01f, 1.0f));
-            //}
 
             // flip sprite
             bool flipSprite = (spriteRenderer.flipX ? (move.x > 0.01f) : (move.x < -0.01f));
