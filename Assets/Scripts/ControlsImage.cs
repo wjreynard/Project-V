@@ -35,12 +35,13 @@ public class ControlsImage : MonoBehaviour
     {
         if (!bStarted && Input.GetButtonDown("Jump"))
         {
+            player.bCanMove = true;
+
             bStarted = true;
             StartCoroutine(FadeMixerGroup.StartFade(audioMixer_Effects, "EffectsMasterVolume", 0.01f, 1.0f));
-            StartCoroutine(FadeMixerGroup.StartFade(audioMixer_Music, "MusicMasterVolume", 10.0f, 1.0f));
+            StartCoroutine(FadeMixerGroup.StartFade(audioMixer_Music, "MusicMasterVolume", 7.0f, 1.0f));
             audioManager_Effects.PlaySound("Start");
             animator.SetBool("Active", false);
-            player.bCanMove = true;
         }
     }
 }

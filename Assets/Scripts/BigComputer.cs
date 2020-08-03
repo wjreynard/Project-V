@@ -39,7 +39,7 @@ public class BigComputer : MonoBehaviour
 
         if (bActive)
         {
-            StartCoroutine(FadeAudioSource.StartFade(GetComponent<AudioSource>(), 0.4f, 0.0f));
+            StartCoroutine(FadeAudioSource.StartFade(GetComponent<AudioSource>(), 0.2f, 0.0f));
             animator.SetBool("Active", true);
             StartCoroutine(EndScreenCoroutine());
         }
