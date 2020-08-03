@@ -11,7 +11,7 @@ public class Computer : MonoBehaviour
     {
         if (bActive)
         {
-            StartCoroutine(FadeAudioSource.StartFade(GetComponent<AudioSource>(), 0.1f, 0.0f));
+            StartCoroutine(FadeAudioSource.StartFade(GetComponent<AudioSource>(), 0.8f, 0.0f));
             animator.SetBool("Active", true);
         }
     }
