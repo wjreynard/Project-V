@@ -8,6 +8,8 @@ public class AudioManager : MonoBehaviour
     public AudioMixer audioMixer;
     public AudioMixerGroup audioMixerGroup;
 
+    public bool bPlayMusic;
+
     public Sound[] sounds;
 
     //public static AudioManager instance;
@@ -39,8 +41,18 @@ public class AudioManager : MonoBehaviour
 
     public void Start()
     {
-        PlaySound("Music");
-        StartCoroutine(FadeMixerGroup.StartFade(audioMixer, "MasterVolume", 0.01f, 1.0f));
+        if (bPlayMusic)
+        {
+            PlaySound("Music");
+            PlaySound("Beat");
+
+            //StartCoroutine(FadeMixerGroup.StartFade(audioMixer, "MusicMasterVolume", 25.01f, 1.0f));
+        }
+
+        if (!bPlayMusic)
+        {
+            StartCoroutine(FadeMixerGroup.StartFade(audioMixer, "EffectsMasterVolume", 20.01f, 1.0f));
+        }
     }
 
     public void PlaySound(string name)
