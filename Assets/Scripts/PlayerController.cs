@@ -51,22 +51,27 @@ public class PlayerController : PhysicsObject
 
             if (velocity.y < 0.01f && velocity.y > -0.01f)  // if not moving on y-axis
             {
-                // fade out beat track
-                StartCoroutine(FadeMixerGroup.StartFade(audioMixer_Music, "BeatMasterVolume", 1.0f, 0.0f));
+
+                // play land sound
+                if (!bAlreadyLanded)
+                {
+                    bAlreadyLanded = true;
+                    Debug.Log("Playing land sound");
+                    audioManager_Effects.PlaySound("Landed");
+                    // fade out beat track
+                    StartCoroutine(FadeMixerGroup.StartFade(audioMixer_Music, "BeatMasterVolume", 1.0f, 0.0f));
+                }
             }
             else if (velocity.y > 0.01f || velocity.y < -0.01f) // if moving up or down
             {
+                Debug.Log("Player moving up or down");
+
                 bAlreadyLanded = false;
+
                 // fade in beat track
                 StartCoroutine(FadeMixerGroup.StartFade(audioMixer_Music, "BeatMasterVolume", 0.1f, 1.0f));
             }
 
-            if (!bAlreadyLanded && bGrounded)
-            {
-                Debug.Log("Played landing sound");
-                bAlreadyLanded = true;
-                audioManager_Effects.PlaySound("Landed");
-            }
 
             //// fade out beat track when they landed
             //if (bGrounded)
