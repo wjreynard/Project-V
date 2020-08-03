@@ -11,6 +11,7 @@ public class Computer : MonoBehaviour
     {
         if (bActive)
         {
+            GetComponent<AudioSource>().volume = 0.0f;
             animator.SetBool("Active", true);
         }
     }

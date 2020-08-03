@@ -6,19 +6,29 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : PhysicsObject
 {
+    [Space(10)]
+
     public float maxSpeed = 10.0f;
-    public Checkpoint checkpoint;
-    public Vector3 checkpointTransform;
+    public bool bCanMove = false;
+    public Animator animator;
     public int score = 0;
 
-    public GameObject activeCamera;
-    public Animator animator;
+    [Space(10)]
 
-    public bool bCanMove = false;
+    public Checkpoint checkpoint;
+    public Vector3 checkpointTransform;
+    public GameObject activeCamera;
+
+    [Space(10)]
 
     public AudioManager audioManager_Effects;
+    public AudioManager audioManager_Music;
+
+    [Space(10)]
 
     public RespawnImage respawnImage;
+
+    [Space(10)]
 
     public BigComputer bigComputer;
 
@@ -34,6 +44,7 @@ public class PlayerController : PhysicsObject
             {
                 FlipGravity();
                 audioManager_Effects.PlaySound("Jump");
+                //audioManager_Music.gameObject.GetComponent<AudioSource>().
             }
 
             // flip sprite

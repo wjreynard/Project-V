@@ -23,7 +23,7 @@ public class EndScreen : MonoBehaviour
         {
             holder.SetActive(true);
             animator.SetBool("Active", true);
-            finalScoreText.text = "Y0U SC0RED " + player.score.ToString() + " / 6  C0INS";
+            finalScoreText.text = "Y0U  F0UND  " + player.score.ToString() +" / 6  C0INS";
 
             // restart on SPACE press
             if (Input.GetButtonDown("Jump"))
