@@ -46,6 +46,12 @@ public class PhysicsObject : MonoBehaviour
     {
         targetVelocity = Vector2.zero;  // clear old data
         ComputeVelocity();
+
+        if (Input.GetAxis("Cancel") > 0)
+        {
+            Debug.Log("Player quit");
+            Application.Quit();
+        }
     }
 
     protected virtual void ComputeVelocity()
