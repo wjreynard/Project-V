@@ -11,6 +11,7 @@ public class ControlsImage : MonoBehaviour
 
     public PlayerController player;
     public AudioManager audioManager_Effects;
+    public AudioMixer audioMixer_Effects;
     public AudioMixer audioMixer_Music;
 
     private bool bStarted = false;
@@ -35,7 +36,8 @@ public class ControlsImage : MonoBehaviour
         if (!bStarted && Input.GetButtonDown("Jump"))
         {
             bStarted = true;
-            StartCoroutine(FadeMixerGroup.StartFade(audioMixer_Music, "MusicMasterVolume", 5.01f, 1.0f));
+            StartCoroutine(FadeMixerGroup.StartFade(audioMixer_Effects, "EffectsMasterVolume", 0.01f, 1.0f));
+            StartCoroutine(FadeMixerGroup.StartFade(audioMixer_Music, "MusicMasterVolume", 10.0f, 1.0f));
             audioManager_Effects.PlaySound("Start");
             animator.SetBool("Active", false);
             player.bCanMove = true;

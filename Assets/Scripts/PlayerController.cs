@@ -98,7 +98,6 @@ public class PlayerController : PhysicsObject
         activeCamera.SetActive(true);
 
         int r = Mathf.CeilToInt(UnityEngine.Random.Range(0.0f, 3.0f));
-        Debug.Log(r);
         audioManager_Effects.PlaySound("Respawn" + r.ToString());
         bCanMove = true;
 
