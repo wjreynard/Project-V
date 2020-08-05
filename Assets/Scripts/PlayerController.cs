@@ -110,8 +110,6 @@ public class PlayerController : PhysicsObject
 
     private void ResetPlayer()
     {
-        deathCount++;
-
         Vector2 oldGravityVector = gravityVector;
         float oldGravityModifier = gravityModifier;
         gravityModifier = 0;
@@ -122,6 +120,8 @@ public class PlayerController : PhysicsObject
 
         gravityVector = oldGravityVector;
         gravityModifier = oldGravityModifier;
+
+        deathCount++; // glitch with respawning twice
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

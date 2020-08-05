@@ -23,7 +23,7 @@ public class EndScreen : MonoBehaviour
         if (bActive)
         {
             finalScoreText.text = "Y0U  F0UND  " + player.score.ToString() +" / 6  C0INS";
-            deathCountText.text = "Y0U  DIED  " + player.deathCount.ToString() + "  TIMES";
+            deathCountText.text = "Y0U  DIED  " + Mathf.FloorToInt(player.deathCount / 2).ToString() + "  TIMES";   // glitch with dying twice
             holder.SetActive(true);
             animator.SetBool("Active", true);
 
