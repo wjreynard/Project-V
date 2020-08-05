@@ -13,6 +13,7 @@ public class PlayerController : PhysicsObject
     public bool bCanMove = false;
     public Animator animator;
     public int score = 0;
+    public int deathCount = 0;
     private bool bAlreadyLanded = true;
 
     [Space(20)]
@@ -109,6 +110,8 @@ public class PlayerController : PhysicsObject
 
     private void ResetPlayer()
     {
+        deathCount++;
+
         Vector2 oldGravityVector = gravityVector;
         float oldGravityModifier = gravityModifier;
         gravityModifier = 0;

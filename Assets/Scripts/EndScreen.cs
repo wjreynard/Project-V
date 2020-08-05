@@ -10,6 +10,7 @@ public class EndScreen : MonoBehaviour
 
     public bool bActive;
     public Text finalScoreText;
+    public Text deathCountText;
     public Animator animator;
     public PlayerController player;
     public GameObject holder;
@@ -22,6 +23,7 @@ public class EndScreen : MonoBehaviour
         if (bActive)
         {
             finalScoreText.text = "Y0U  F0UND  " + player.score.ToString() +" / 6  C0INS";
+            deathCountText.text = "Y0U  DIED  " + player.deathCount.ToString() + "  TIMES";
             holder.SetActive(true);
             animator.SetBool("Active", true);
 
